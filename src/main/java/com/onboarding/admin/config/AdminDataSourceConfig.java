@@ -2,6 +2,7 @@ package com.onboarding.admin.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -34,18 +35,24 @@ import java.util.Map;
 )
 public class AdminDataSourceConfig {
 
+    @Value("${spring.datasource.admin.jdbc-url}")
+    private String adminJdbcUrl;
+    
+    @Value("${spring.datasource.admin.username}")
+    private String adminUsername;
+    
+    @Value("${spring.datasource.admin.password}")
+    private String adminPassword;
+
     @Primary
     @Bean(name = "adminDataSource")
     @ConfigurationProperties("spring.datasource.admin.hikari")
     public DataSource adminDataSource() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/kyc_admin");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("123456");
+        dataSource.setJdbcUrl(adminJdbcUrl);
+        dataSource.setUsername(adminUsername);
+        dataSource.setPassword(adminPassword);
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setMaximumPoolSize(10);
-        dataSource.setMinimumIdle(5);
-        dataSource.setConnectionTimeout(30000);
         return dataSource;
     }
 
