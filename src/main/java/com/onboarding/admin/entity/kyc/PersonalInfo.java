@@ -19,7 +19,7 @@ public class PersonalInfo {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
 
-// system values
+// system values - stored but not exposed to frontend as editable
 	private String partyId;
 	private String customerId;
 	private String partyTypeSystem;
@@ -34,24 +34,21 @@ public class PersonalInfo {
 	private String secondName;
 	private String lastName;
 	private String familyName;
+	private String fullNameAr; // Arabic full name from Nafath
+	private String gender; // Male/Female from Nafath
+	private String birthDateHijri; // Hijri birth date from Nafath
+	private String birthDateGregorian; // Gregorian birth date from Nafath
+	private String educationLevel; // Education level
+	private String maritalStatus; // Marital status
 	private Integer numOfDependents;
-	private Long netWorth;
-	private Long netWorthGrowth;
-	
+
+	private String approximateAnnualIncome; // Approximate annual income range (e.g., "100000-200000")
+	private String approximateNetWorth; // Approximate net worth range (e.g., "500000-1000000")
+
 	@ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
 	@CollectionTable(name = "personal_info_income_sources", joinColumns = @JoinColumn(name = "personal_info_id"))
 	@Column(name = "income_source")
 	private List<String> incomeSources;
 
-// Address
-	private String country;
-	private String city;
-	private String district;
-	private String street;
-	private String buildingNumber;
-
-// Contact
-	private String primaryContact;
-	private String altMobile;
-	private String countryCode;
+// getters/setters omitted
 }

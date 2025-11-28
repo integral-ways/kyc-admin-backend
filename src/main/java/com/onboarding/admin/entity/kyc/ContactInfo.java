@@ -28,4 +28,6 @@ public class ContactInfo {
 	private String primaryContact; // readonly, same mobile used during login
 	private String altMobile;
 	private String countryCode;
+	private String email; // Email address
+	private String preferredLanguage; // Preferred language (en, ar)
 }

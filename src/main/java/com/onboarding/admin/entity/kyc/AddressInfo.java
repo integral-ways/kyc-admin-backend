@@ -25,9 +25,15 @@ public class AddressInfo {
 	@Column(nullable = false)
 	private String customerId;
 
+	private Boolean liveOutsideKSA;
 	private String country;
+	private String region;
+
 	private String city;
 	private String district;
 	private String street;
 	private String buildingNumber;
+	private String unitNumber;
+	private String additionalNumber;
+	private String postalCode;
 }

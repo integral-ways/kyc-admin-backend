@@ -19,6 +19,18 @@ public class GeneralInfo {
 	private String investmentKnowledge;
 	private String riskTolerance;
 
+	// Beneficial Owner
+	private Boolean isBeneficialOwner;
+	private String beneficialOwnerName;
+
+	// Financial Sector Questions
+	private Boolean workedInFinancialSector;
+	private Boolean hasFinancialExperience;
+	private Boolean isBoardMember;
+	private Boolean isConnectedToBoardMember;
+	private Boolean hasPublicPosition;
+	private Boolean hasRelationshipWithPublicOfficial;
+
 	@Lob
 	private String answersJson;
 
